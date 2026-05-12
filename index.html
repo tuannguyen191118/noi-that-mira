@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Nội Thất Mira - Thiết kế và thi công nội thất luxury cho căn hộ, biệt thự, showroom, nhà hàng, cafe và spa." />
+  <meta name="keywords" content="Nội Thất Mira, thiết kế nội thất, thi công nội thất, nội thất luxury, showroom, căn hộ, biệt thự, nhà hàng, spa" />
+  <title>Nội Thất Mira | Luxury Interior Design</title>
+  <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0a08;
+      --bg-soft: #14110d;
+      --card: #1b1712;
+      --gold: #c7a45d;
+      --gold-soft: #f1d99a;
+      --text: #f8f3e8;
+      --muted: #b9ad9b;
+      --line: rgba(199, 164, 93, .22);
+      --white: #ffffff;
+      --shadow: 0 30px 80px rgba(0,0,0,.45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: auto; }
+    .section { padding: 110px 0; position: relative; }
+    .eyebrow { color: var(--gold); text-transform: uppercase; letter-spacing: .22em; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.1; }
+    h2 { font-size: clamp(36px, 5vw, 68px); margin-bottom: 22px; }
+    .lead { color: var(--muted); font-size: 18px; max-width: 720px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 15px 24px; border-radius: 999px; border: 1px solid var(--gold);
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft)); color: #17110b;
+      font-weight: 700; transition: .3s ease; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(199,164,93,.24); }
+    .btn.ghost { background: transparent; color: var(--text); }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: rgba(11,10,8,.72); backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { height: 78px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .brand-mark {
+      width: 42px; height: 42px; border: 1px solid var(--gold); border-radius: 50%;
+      display: grid; place-items: center; color: var(--gold); font-family: 'Playfair Display', serif;
+    }
+    .brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo {
+  height: 54px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 22px rgba(199,164,93,.18));
+}
+    .nav-links { display: flex; gap: 30px; list-style: none; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--gold-soft); }
+    .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--text); padding: 10px 12px; border-radius: 10px; }
+
+    .hero {
+      min-height: 100vh; display: grid; place-items: center; position: relative; overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(11,10,8,.88), rgba(11,10,8,.42)),
+        url('assets/img/header-bg.jpg') center/cover no-repeat;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: auto 0 0 0; height: 220px;
+      background: linear-gradient(transparent, var(--bg));
+    }
+    .hero-content { position: relative; z-index: 2; padding-top: 80px; }
+    .hero h1 { font-size: clamp(34px, 5vw, 68px); max-width: 960px; letter-spacing: -.04em; margin-bottom: 24px; }
+    .hero h1 span { color: var(--gold); font-style: italic; }
+    .hero p { max-width: 680px; color: #d8cdbd; font-size: clamp(14px, 2vw, 18px); margin-bottom: 34px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-stats { margin-top: 70px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 760px; }
+    .stat { border-left: 1px solid var(--gold); padding-left: 18px; }
+    .stat strong { display: block; font-size: 34px; color: var(--gold-soft); font-family: 'Playfair Display', serif; }
+    .stat span { color: var(--muted); font-size: 14px; }
+
+    .split { display: grid; grid-template-columns: .95fr 1.05fr; gap: 70px; align-items: center; }
+    .image-card { position: relative; border-radius: 28px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .image-card img { width: 100%; height: 560px; object-fit: cover; filter: saturate(.9) contrast(1.05); }
+    .image-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent, rgba(0,0,0,.44)); }
+
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 55px; }
+    .service-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+      border: 1px solid var(--line); border-radius: 28px; overflow: hidden; transition: .35s ease;
+    }
+    .service-card:hover { transform: translateY(-8px); border-color: rgba(241,217,154,.55); }
+    .service-card img { height: 270px; width: 100%; object-fit: cover; }
+    .service-body { padding: 28px; }
+    .service-body h3 { font-size: 30px; margin-bottom: 14px; }
+    .service-body p { color: var(--muted); margin-bottom: 22px; }
+    .text-link { background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--gold-soft);
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px; }
+
+    .projects { background: var(--bg-soft); }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 55px; }
+    .project-card { position: relative; min-height: 390px; border-radius: 26px; overflow: hidden; border: 1px solid var(--line); cursor: pointer; }
+    .project-card img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; transition: .6s ease; }
+    .project-card:hover img { transform: scale(1.08); }
+    .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 25%, rgba(0,0,0,.88)); }
+    .project-info { position: absolute; z-index: 2; left: 24px; right: 24px; bottom: 24px; }
+    .project-info h3 { font-size: 30px; margin-bottom: 8px; }
+    .project-info p { color: #ddd0be; }
+
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 55px; }
+    .process-card { padding: 30px; border: 1px solid var(--line); border-radius: 26px; background: rgba(255,255,255,.035); }
+    .process-card span { color: var(--gold); font-weight: 800; letter-spacing: .15em; }
+    .process-card h3 { font-size: 26px; margin: 18px 0 12px; }
+    .process-card p { color: var(--muted); }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 55px; }
+    .blog-card { border: 1px solid var(--line); border-radius: 26px; overflow: hidden; background: rgba(255,255,255,.035); }
+    .blog-card img { width: 100%; height: 230px; object-fit: cover; }
+    .blog-body { padding: 26px; }
+    .blog-body small { color: var(--gold); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
+    .blog-body h3 { font-size: 28px; margin: 14px 0; }
+    .blog-body p { color: var(--muted); }
+
+    .contact { background:
+      linear-gradient(rgba(11,10,8,.9), rgba(11,10,8,.96)),
+      url('assets/img/contact-bg.jpg') center/cover no-repeat;
+    }
+    .contact-box { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 45px; }
+    .contact-panel { padding: 38px; border: 1px solid var(--line); border-radius: 28px; background: rgba(255,255,255,.04); }
+    .contact-list { list-style: none; display: grid; gap: 18px; color: var(--muted); }
+    .contact-list strong { color: var(--text); display: block; margin-bottom: 4px; }
+    .form { display: grid; gap: 14px; }
+    input, textarea {
+      width: 100%; background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 16px;
+      padding: 16px; color: var(--text); outline: none; font: inherit;
+    }
+    textarea { min-height: 140px; resize: vertical; }
+
+    footer { padding: 34px 0; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,.76); display: none; align-items: center; justify-content: center; padding: 20px; z-index: 2000; }
+    .modal.active { display: flex; }
+    .modal-content { width: min(920px, 100%); max-height: 88vh; overflow: auto; background: #f7f1e6; color: #17110b; border-radius: 28px; position: relative; }
+    .modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .modal img { height: 100%; width: 100%; object-fit: cover; min-height: 420px; }
+    .modal-text { padding: 42px; }
+    .modal-text h3 { font-size: 42px; margin-bottom: 16px; }
+    .modal-text p { color: #5b5145; margin-bottom: 14px; }
+    .close { position: absolute; right: 18px; top: 14px; width: 42px; height: 42px; border-radius: 50%; border: 0; background: #17110b; color: #fff; font-size: 24px; cursor: pointer; z-index: 2; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: .75s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .menu-btn { display: block; }
+      .nav-links { position: absolute; left: 20px; right: 20px; top: 88px; background: #14110d; border: 1px solid var(--line); border-radius: 20px; padding: 20px; flex-direction: column; display: none; }
+      .nav-links.active { display: flex; }
+      .split, .contact-box, .modal-grid { grid-template-columns: 1fr; }
+      .service-grid, .project-grid, .process-grid, .blog-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .section { padding: 78px 0; }
+      .image-card img { height: 420px; }
+      .modal img { min-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-inner">
+     <a href="#page-top" class="brand" aria-label="Nội Thất Mira">
+        <img class="brand-logo" src="assets/img/logo.png" alt="Nội Thất Mira Logo">
+         <div class="brand-text">
+         <span>NỘI THẤT</span>
+         <strong>MIRA</strong>
+         </div>
+    </a>
+      <button class="menu-btn" id="menuBtn">Menu</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Thiết Kế</a></li>
+        <li><a href="#Projects">Dự Án</a></li>
+        <li><a href="#services">Dịch Vụ</a></li>
+        <li><a href="#blog">Bài Viết</a></li>
+        <li><a href="#contact">Liên Hệ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="page-top">
+    <div class="container hero-content reveal">
+      <div class="eyebrow">Luxury Interior Studio</div>
+      <h1>Nơi cảm xúc <span>sống cùng đẳng cấp</span></h1>
+      <p>Mira thiết kế và thi công những không gian có chiều sâu: sang trọng, tinh tế, vận hành tốt và phản chiếu đúng gu sống của chủ nhân.</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn">Khám phá Mira</a>
+        <a href="#contact" class="btn ghost">Nhận tư vấn concept</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>12+</strong><span>Năm kinh nghiệm không gian thương mại & nhà ở</span></div>
+        <div class="stat"><strong>180+</strong><span>Công trình thiết kế, thi công và cải tạo</span></div>
+        <div class="stat"><strong>01</strong><span>Quy trình trọn gói từ ý tưởng đến bàn giao</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="about">
+      <div class="container split">
+        <div class="reveal">
+          <div class="eyebrow">Mira Philosophy</div>
+          <h2>Thiết kế đẹp phải có lý do tồn tại.</h2>
+          <p class="lead">Chúng tôi không bắt đầu bằng màu sơn hay món đồ trang trí. Mira bắt đầu từ thói quen sống, hành vi sử dụng, ngân sách đầu tư và cảm xúc mà bạn muốn không gian tạo ra mỗi ngày.</p>
+          <br>
+          <p class="lead">Một căn hộ luxury không nhất thiết phải phô trương. Một showroom cao cấp không chỉ để “đã mắt”. Một nhà hàng đẹp phải khiến khách muốn ngồi lâu hơn, gọi thêm món và quay lại.</p>
+        </div>
+        <div class="image-card reveal"><img src="assets/img/about-img.jpg" alt="Không gian nội thất luxury của Mira"></div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">What We Design</div>
+          <h2>Thiết kế & thi công</h2>
+          <p class="lead">Giữ lại cấu trúc dịch vụ cũ nhưng nâng toàn bộ ngôn ngữ thương hiệu theo hướng sang trọng, có chiều sâu và dễ chuyển đổi khách hàng.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <img src="assets/img/thum-1.jpg" alt="Thiết kế căn hộ và biệt thự">
+            <div class="service-body">
+              <h3>Căn Hộ & Biệt Thự</h3>
+              <p>Không gian sống được cá nhân hoá theo gu thẩm mỹ, nhịp sinh hoạt và tiêu chuẩn tiện nghi của từng gia chủ.</p>
+              <button class="text-link" data-modal="modal-home">Đọc thêm →</button>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="assets/img/thum-2.jpg" alt="Thiết kế nhà hàng cafe spa">
+            <div class="service-body">
+              <h3>Cafe, Spa & Nhà Hàng</h3>
+              <p>Thiết kế trải nghiệm giúp khách dừng lại lâu hơn, cảm nhận thương hiệu rõ hơn và dễ quay lại hơn.</p>
+              <button class="text-link" data-modal="modal-fnb">Đọc thêm →</button>
+            </div>
+          </article>
+          <article class="service-card reveal">
+            <img src="assets/img/thum-3.jpg" alt="Thiết kế showroom cửa hàng">
+            <div class="service-body">
+              <h3>Showroom & Cửa Hàng</h3>
+              <p>Không gian trưng bày được tính toán theo luồng di chuyển, điểm nhìn và khu vực chốt quyết định.</p>
+              <button class="text-link" data-modal="modal-retail">Đọc thêm →</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects" id="Projects">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Selected Works</div>
+          <h2>Dự án tiêu biểu</h2>
+          <p class="lead">Mỗi dự án là một bài toán riêng: mặt bằng, hành vi khách hàng, ngân sách, vật liệu và cảm xúc thương hiệu.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card reveal" data-modal="project-1"><img src="assets/img/portfolio/fullsize/1.jpg" alt="Mira Residence"><div class="project-info"><h3>Mira Residence</h3><p>Căn hộ luxury | Quận 2, TP.HCM</p></div></article>
+          <article class="project-card reveal" data-modal="project-2"><img src="assets/img/portfolio/fullsize/2.jpg" alt="Lumi Spa"><div class="project-info"><h3>Lumi Spa</h3><p>Wellness Spa | Bình Dương</p></div></article>
+          <article class="project-card reveal" data-modal="project-3"><img src="assets/img/portfolio/fullsize/3.jpg" alt="Maison Café"><div class="project-info"><h3>Maison Café</h3><p>Cafe & Lounge | Tân Bình</p></div></article>
+          <article class="project-card reveal" data-modal="project-4"><img src="assets/img/portfolio/fullsize/4.jpg" alt="The Gallery"><div class="project-info"><h3>The Gallery</h3><p>Showroom nội thất | Tây Ninh</p></div></article>
+          <article class="project-card reveal" data-modal="project-5"><img src="assets/img/portfolio/fullsize/5.jpg" alt="D’or Kitchen"><div class="project-info"><h3>D’or Kitchen</h3><p>Nhà hàng cao cấp | Đắk Lắk</p></div></article>
+          <article class="project-card reveal" data-modal="project-6"><img src="assets/img/portfolio/fullsize/6.jpg" alt="Villa An Nhiên"><div class="project-info"><h3>Villa An Nhiên</h3><p>Biệt thự nghỉ dưỡng | Đồng Nai</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Our Process</div>
+          <h2>Quy trình làm việc</h2>
+          <p class="lead">Quy trình rõ ràng giúp khách hàng không bị mơ hồ, tránh phát sinh và kiểm soát tốt chất lượng thi công.</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-card reveal"><span>01</span><h3>Lắng nghe</h3><p>Hiểu nhu cầu, phong cách sống, mục tiêu kinh doanh và mức đầu tư phù hợp.</p></div>
+          <div class="process-card reveal"><span>02</span><h3>Concept</h3><p>Định hình moodboard, layout, ánh sáng, vật liệu và câu chuyện không gian.</p></div>
+          <div class="process-card reveal"><span>03</span><h3>Thi công</h3><p>Kiểm soát bản vẽ, tiến độ, vật liệu và từng chi tiết hoàn thiện tại công trình.</p></div>
+          <div class="process-card reveal"><span>04</span><h3>Bàn giao</h3><p>Nghiệm thu, hướng dẫn sử dụng, bảo hành và đồng hành sau khi đưa vào vận hành.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="blog">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Mira Journal</div>
+          <h2>Bài viết tư vấn</h2>
+          <p class="lead">Giữ tinh thần blog cũ: nói thẳng, thực tế và giúp khách hàng tránh những sai lầm tốn kém trước khi làm nội thất.</p>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card reveal"><img src="assets/img/1.jpg" alt="Sai lầm khi làm nội thất"><div class="blog-body"><small>26 / 04 / 2026</small><h3>Đẹp thôi chưa đủ: vì sao nhiều nhà luxury vẫn khó sống?</h3><p>Không gian đắt tiền nhưng bất tiện thường bắt đầu từ một lỗi rất nhỏ: thiết kế theo hình ảnh, không theo thói quen sống.</p></div></article>
+          <article class="blog-card reveal"><img src="assets/img/2.jpg" alt="Nhà hàng giữ khách"><div class="blog-body"><small>26 / 04 / 2026</small><h3>Nhà hàng giữ khách bằng không gian như thế nào?</h3><p>Món ăn đưa khách đến lần đầu. Không gian, ánh sáng và cảm giác riêng tư mới là thứ kéo khách quay lại.</p></div></article>
+          <article class="blog-card reveal"><img src="assets/img/3.jpg" alt="Showroom bán hàng"><div class="blog-body"><small>26 / 04 / 2026</small><h3>Showroom đẹp nhưng không bán được hàng: lỗi nằm ở đâu?</h3><p>Showroom không phải sân khấu để khoe thiết kế. Nó phải dẫn ánh nhìn, tạo điểm dừng và hỗ trợ quyết định mua.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">Contact Mira</div>
+          <h2>Bắt đầu từ một cuộc trò chuyện.</h2>
+          <p class="lead">Gửi Mira nhu cầu, mặt bằng hoặc hình ảnh hiện trạng. Chúng tôi sẽ giúp bạn nhìn rõ hướng đi trước khi quyết định đầu tư.</p>
+        </div>
+        <div class="contact-box">
+          <div class="contact-panel reveal">
+            <ul class="contact-list">
+              <li><strong>Địa chỉ</strong> 47/14 Nguyễn Quý Anh, Phường Tân Sơn Nhì, TP.HCM</li>
+              <li><strong>Điện thoại</strong> 090 719 03 83</li>
+              <li><strong>Email</strong> hello@noithatmira.vn</li>
+              <li><strong>Website</strong> noithatmira.vn</li>
+            </ul>
+          </div>
+          <div class="contact-panel reveal">
+            <form class="form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn. Mira sẽ liên hệ lại trong thời gian sớm nhất.');">
+              <input type="text" placeholder="Họ và tên" required>
+              <input type="tel" placeholder="Số điện thoại" required>
+              <input type="email" placeholder="Email">
+              <textarea placeholder="Bạn muốn làm căn hộ, biệt thự, showroom, cafe hay spa?" required></textarea>
+              <button class="btn" type="submit">Gửi yêu cầu tư vấn</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© 2026 Nội Thất Mira. All rights reserved.</p>
+      <p>Luxury Interior Design & Build Studio</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal-home"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img.jpg" alt="Căn hộ biệt thự"><div class="modal-text"><h3>Căn Hộ & Biệt Thự</h3><p>Mira tạo ra không gian sống sang trọng nhưng không phô trương. Mỗi đường nét, mảng sáng và chất liệu đều được chọn để phục vụ cảm xúc sống thật của gia chủ.</p><p>Chúng tôi phân tích thói quen sinh hoạt, nhu cầu lưu trữ, nhịp di chuyển và gu thẩm mỹ trước khi đề xuất concept. Kết quả không chỉ là một căn nhà đẹp trên ảnh, mà là một nơi bạn muốn trở về mỗi ngày.</p></div></div></div></div>
+  <div class="modal" id="modal-fnb"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img3.jpg" alt="Cafe Spa Nhà hàng"><div class="modal-text"><h3>Cafe, Spa & Nhà Hàng</h3><p>Với không gian kinh doanh, thiết kế phải tạo doanh thu. Mira cân bằng giữa thẩm mỹ, vận hành, trải nghiệm khách hàng và chi phí đầu tư.</p><p>Chúng tôi tính toán lối đi, điểm chụp ảnh, vùng riêng tư, ánh sáng, âm thanh và cảm giác thương hiệu để khách không chỉ bước vào, mà còn muốn ở lại lâu hơn.</p></div></div></div></div>
+  <div class="modal" id="modal-retail"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img4.jpg" alt="Showroom cửa hàng"><div class="modal-text"><h3>Showroom & Cửa Hàng</h3><p>Một showroom hiệu quả không để khách tự đoán nên nhìn gì. Nó dẫn dắt khách qua từng điểm chạm: thu hút, khám phá, so sánh và ra quyết định.</p><p>Mira thiết kế layout trưng bày, vùng spotlight, vật liệu nền và khu vực tư vấn để sản phẩm trở thành nhân vật chính, còn không gian là người bán hàng thầm lặng.</p></div></div></div></div>
+
+  <div class="modal" id="project-1"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img11.jpg" alt="Mira Residence"><div class="modal-text"><h3>Mira Residence</h3><p><strong>Địa điểm:</strong> Quận 2, TP.HCM<br><strong>Diện tích:</strong> 180m²</p><p>Căn hộ được xử lý theo tinh thần modern luxury: ít chi tiết nhưng giàu chất liệu, tập trung vào ánh sáng ấm, đá tự nhiên và hệ tủ âm tường tinh gọn.</p></div></div></div></div>
+  <div class="modal" id="project-2"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img12.jpg" alt="Lumi Spa"><div class="modal-text"><h3>Lumi Spa</h3><p><strong>Địa điểm:</strong> Bình Dương<br><strong>Diện tích:</strong> 420m²</p><p>Không gian spa được thiết kế như một hành trình chữa lành: ánh sáng dịu, mùi hương, vật liệu tự nhiên và luồng di chuyển riêng tư.</p></div></div></div></div>
+  <div class="modal" id="project-3"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img13.jpg" alt="Maison Café"><div class="modal-text"><h3>Maison Café</h3><p><strong>Địa điểm:</strong> Tân Bình, TP.HCM<br><strong>Diện tích:</strong> 300m²</p><p>Một quán cafe theo phong cách boutique lounge, tối ưu góc ngồi, điểm chụp ảnh và trải nghiệm khách vào buổi sáng lẫn buổi tối.</p></div></div></div></div>
+  <div class="modal" id="project-4"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img14.jpg" alt="The Gallery"><div class="modal-text"><h3>The Gallery</h3><p><strong>Địa điểm:</strong> Tây Ninh<br><strong>Diện tích:</strong> 260m²</p><p>Showroom được thiết kế với trục nhìn rõ, vùng sản phẩm chủ lực và khu tư vấn riêng để tăng khả năng chốt đơn.</p></div></div></div></div>
+  <div class="modal" id="project-5"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img15.jpg" alt="D'or Kitchen"><div class="modal-text"><h3>D’or Kitchen</h3><p><strong>Địa điểm:</strong> Đắk Lắk<br><strong>Diện tích:</strong> 400m²</p><p>Nhà hàng được xây dựng quanh cảm giác ấm, riêng tư và cao cấp, đồng thời đảm bảo vận hành bếp và phục vụ nhanh gọn.</p></div></div></div></div>
+  <div class="modal" id="project-6"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img16.jpg" alt="Villa An Nhiên"><div class="modal-text"><h3>Villa An Nhiên</h3><p><strong>Địa điểm:</strong> Đồng Nai<br><strong>Diện tích:</strong> 520m²</p><p>Biệt thự nghỉ dưỡng dùng bảng màu trầm, vật liệu tự nhiên và khoảng thở lớn để tạo cảm giác yên tĩnh, sâu và bền vững theo thời gian.</p></div></div></div></div>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
+
+    document.querySelectorAll('[data-modal]').forEach(el => {
+      el.addEventListener('click', () => {
+        const modal = document.getElementById(el.dataset.modal);
+        if (modal) modal.classList.add('active');
+      });
+    });
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', e => {
+        if (e.target === modal || e.target.classList.contains('close')) modal.classList.remove('active');
+      });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
