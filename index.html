@@ -137,13 +137,52 @@
     .process-card h3 { font-size: 26px; margin: 18px 0 12px; }
     .process-card p { color: var(--muted); }
 
-    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 55px; }
-    .blog-card { border: 1px solid var(--line); border-radius: 26px; overflow: hidden; background: rgba(255,255,255,.035); }
-    .blog-card img { width: 100%; height: 230px; object-fit: cover; }
+    .blog-grid { display: grid;  grid-template-columns: repeat(3, 1fr);  gap: 26px;  margin-top: 55px; }
+    .blog-card {border: 1px solid var(--line);
+  border-radius: 26px;
+  overflow: hidden;
+  background: rgba(255,255,255,.035);
+  cursor: pointer;
+  transition: .3s ease; }
+  .blog-card:hover {
+ transform: translateY(-6px);
+  border-color: rgba(241,217,154,.55);
+}
+.blog-card .eyebrow {
+  display: block;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.blog-card h3 {
+  font-size: 26px;
+  line-height: 1.18;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+.blog-card p {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 26px;
+}
+.blog-card .text-link {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--gold-soft);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: left;
+}
+    .blog-card img {  width: 100%;  height: 230px;  object-fit: cover; }
     .blog-body { padding: 26px; }
-    .blog-body small { color: var(--gold); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
-    .blog-body h3 { font-size: 28px; margin: 14px 0; }
-    .blog-body p { color: var(--muted); }
+    .blog-body small {  color: var(--gold);  text-transform: uppercase;  letter-spacing: .12em;  font-weight: 700; }
+    .blog-body h3 { font-size: 26px;  line-height: 1.18;  margin: 14px 0; }
+    .blog-body p { color: var(--muted);  font-size: 16px;  line-height: 1.65;  margin-bottom: 20px; }
 
     .contact { background:
       linear-gradient(rgba(11,10,8,.9), rgba(11,10,8,.96)),
@@ -175,6 +214,93 @@
 
     .reveal { opacity: 0; transform: translateY(24px); transition: .75s ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
+
+    .blog-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-popup.active {
+  display: flex;
+}
+
+.blog-popup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.72);
+  backdrop-filter: blur(10px);
+}
+
+.blog-popup-content {
+  position: relative;
+  width: min(920px, 92%);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #111111;
+  border: 1px solid rgba(212,175,55,.22);
+  border-radius: 28px;
+  padding: 56px;
+  z-index: 2;
+  box-shadow: 0 40px 120px rgba(0,0,0,.5);
+}
+
+.popup-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,.08);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.popup-tag {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--gold);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.popup-article {
+  display: none;
+}
+
+.popup-article.active {
+  display: block;
+}
+
+.popup-article h2 {
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.08;
+  margin-bottom: 34px;
+  color: #fff;
+}
+
+.popup-article p {
+  color: #d3d0ca;
+  font-size: 18px;
+  line-height: 1.95;
+  margin-bottom: 24px;
+}
+
+.blog-popup-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.blog-popup-content::-webkit-scrollbar-thumb {
+  background: rgba(212,175,55,.35);
+}
+
 
     @media (max-width: 900px) {
       .menu-btn { display: block; }
@@ -286,8 +412,8 @@
         </div>
         <div class="project-grid">
           <article class="project-card reveal" data-modal="project-1"><img src="assets/img/portfolio/fullsize/1.jpg" alt="Mira Residence"><div class="project-info"><h3>Mira Residence</h3><p>Căn hộ luxury | Quận 2, TP.HCM</p></div></article>
-          <article class="project-card reveal" data-modal="project-2"><img src="assets/img/portfolio/fullsize/2.jpg" alt="Lumi Spa"><div class="project-info"><h3>Lumi Spa</h3><p>Wellness Spa | Bình Dương</p></div></article>
-          <article class="project-card reveal" data-modal="project-3"><img src="assets/img/portfolio/fullsize/3.jpg" alt="Maison Café"><div class="project-info"><h3>Maison Café</h3><p>Cafe & Lounge | Tân Bình</p></div></article>
+          <article class="project-card reveal" data-modal="project-2"><img src="assets/img/portfolio/fullsize/2.jpg" alt="Serenity Spa"><div class="project-info"><h3>Serenity Spa</h3><p>Wellness Spa | Bình Dương</p></div></article>
+          <article class="project-card reveal" data-modal="project-3"><img src="assets/img/portfolio/fullsize/3.jpg" alt="Lux Café"><div class="project-info"><h3>Lux Café</h3><p>Cafe & Lounge | Đồng Nai</p></div></article>
           <article class="project-card reveal" data-modal="project-4"><img src="assets/img/portfolio/fullsize/4.jpg" alt="The Gallery"><div class="project-info"><h3>The Gallery</h3><p>Showroom nội thất | Tây Ninh</p></div></article>
           <article class="project-card reveal" data-modal="project-5"><img src="assets/img/portfolio/fullsize/5.jpg" alt="D’or Kitchen"><div class="project-info"><h3>D’or Kitchen</h3><p>Nhà hàng cao cấp | Đắk Lắk</p></div></article>
           <article class="project-card reveal" data-modal="project-6"><img src="assets/img/portfolio/fullsize/6.jpg" alt="Villa An Nhiên"><div class="project-info"><h3>Villa An Nhiên</h3><p>Biệt thự nghỉ dưỡng | Đồng Nai</p></div></article>
@@ -319,10 +445,36 @@
           <p class="lead">Giữ tinh thần blog cũ: nói thẳng, thực tế và giúp khách hàng tránh những sai lầm tốn kém trước khi làm nội thất.</p>
         </div>
         <div class="blog-grid">
-          <article class="blog-card reveal"><img src="assets/img/1.jpg" alt="Sai lầm khi làm nội thất"><div class="blog-body"><small>26 / 04 / 2026</small><h3>Đẹp thôi chưa đủ: vì sao nhiều nhà luxury vẫn khó sống?</h3><p>Không gian đắt tiền nhưng bất tiện thường bắt đầu từ một lỗi rất nhỏ: thiết kế theo hình ảnh, không theo thói quen sống.</p></div></article>
-          <article class="blog-card reveal"><img src="assets/img/2.jpg" alt="Nhà hàng giữ khách"><div class="blog-body"><small>26 / 04 / 2026</small><h3>Nhà hàng giữ khách bằng không gian như thế nào?</h3><p>Món ăn đưa khách đến lần đầu. Không gian, ánh sáng và cảm giác riêng tư mới là thứ kéo khách quay lại.</p></div></article>
-          <article class="blog-card reveal"><img src="assets/img/3.jpg" alt="Showroom bán hàng"><div class="blog-body"><small>26 / 04 / 2026</small><h3>Showroom đẹp nhưng không bán được hàng: lỗi nằm ở đâu?</h3><p>Showroom không phải sân khấu để khoe thiết kế. Nó phải dẫn ánh nhìn, tạo điểm dừng và hỗ trợ quyết định mua.</p></div></article>
-        </div>
+  <article class="blog-card reveal" onclick="openBlog('blog1')">
+    <img src="assets/img/1.jpg" alt="Sai lầm khi làm nội thất">
+    <div class="blog-body">
+      <small>Chiến lược không gian</small>
+      <h3>Đẹp thôi chưa đủ, một căn nhà tốt cần khiến người ở muốn trở về mỗi ngày</h3>
+      <p>Không gian sống cao cấp không nằm ở việc dùng bao nhiêu đá nhập hay đèn đắt tiền.</p>
+      <button class="text-link">Đọc bài viết →</button>
+    </div>
+  </article>
+
+  <article class="blog-card reveal" onclick="openBlog('blog2')">
+    <img src="assets/img/2.jpg" alt="Nhà hàng giữ khách">
+    <div class="blog-body">
+      <small>Interior Branding</small>
+      <h3>Nhà hàng đẹp chưa chắc đông khách, nhưng trải nghiệm đúng sẽ khiến khách quay lại</h3>
+      <p>Nội thất F&B không chỉ để chụp hình. Nó phải dẫn cảm xúc và tạo nên ký ức.</p>
+      <button class="text-link">Đọc bài viết →</button>
+    </div>
+  </article>
+
+  <article class="blog-card reveal" onclick="openBlog('blog3')">
+    <img src="assets/img/3.jpg" alt="Showroom bán hàng">
+    <div class="blog-body">
+      <small>Retail Experience</small>
+      <h3>Showroom đẹp nhưng không bán được hàng thường sai ở trải nghiệm di chuyển</h3>
+      <p>Một showroom hiệu quả là hành trình dẫn khách đi đến quyết định mua.</p>
+      <button class="text-link">Đọc bài viết →</button>
+    </div>
+  </article>
+</div>
       </div>
     </section>
 
@@ -368,8 +520,8 @@
   <div class="modal" id="modal-retail"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img4.jpg" alt="Showroom cửa hàng"><div class="modal-text"><h3>Showroom & Cửa Hàng</h3><p>Một showroom hiệu quả không để khách tự đoán nên nhìn gì. Nó dẫn dắt khách qua từng điểm chạm: thu hút, khám phá, so sánh và ra quyết định.</p><p>Mira thiết kế layout trưng bày, vùng spotlight, vật liệu nền và khu vực tư vấn để sản phẩm trở thành nhân vật chính, còn không gian là người bán hàng thầm lặng.</p></div></div></div></div>
 
   <div class="modal" id="project-1"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img11.jpg" alt="Mira Residence"><div class="modal-text"><h3>Mira Residence</h3><p><strong>Địa điểm:</strong> Quận 2, TP.HCM<br><strong>Diện tích:</strong> 180m²</p><p>Căn hộ được xử lý theo tinh thần modern luxury: ít chi tiết nhưng giàu chất liệu, tập trung vào ánh sáng ấm, đá tự nhiên và hệ tủ âm tường tinh gọn.</p></div></div></div></div>
-  <div class="modal" id="project-2"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img12.jpg" alt="Lumi Spa"><div class="modal-text"><h3>Lumi Spa</h3><p><strong>Địa điểm:</strong> Bình Dương<br><strong>Diện tích:</strong> 420m²</p><p>Không gian spa được thiết kế như một hành trình chữa lành: ánh sáng dịu, mùi hương, vật liệu tự nhiên và luồng di chuyển riêng tư.</p></div></div></div></div>
-  <div class="modal" id="project-3"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img13.jpg" alt="Maison Café"><div class="modal-text"><h3>Maison Café</h3><p><strong>Địa điểm:</strong> Tân Bình, TP.HCM<br><strong>Diện tích:</strong> 300m²</p><p>Một quán cafe theo phong cách boutique lounge, tối ưu góc ngồi, điểm chụp ảnh và trải nghiệm khách vào buổi sáng lẫn buổi tối.</p></div></div></div></div>
+  <div class="modal" id="project-2"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img12.jpg" alt="Serenity Spa"><div class="modal-text"><h3>Serenity Spa</h3><p><strong>Địa điểm:</strong> Bình Dương<br><strong>Diện tích:</strong> 420m²</p><p>Không gian spa được thiết kế như một hành trình chữa lành: ánh sáng dịu, mùi hương, vật liệu tự nhiên và luồng di chuyển riêng tư.</p></div></div></div></div>
+  <div class="modal" id="project-3"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img13.jpg" alt="Lux Café"><div class="modal-text"><h3>Lux Café</h3><p><strong>Địa điểm:</strong> Biên Hòa , Đồng Nai<br><strong>Diện tích:</strong> 300m²</p><p>Một quán cafe theo phong cách boutique lounge, tối ưu góc ngồi, điểm chụp ảnh và trải nghiệm khách vào buổi sáng lẫn buổi tối.</p></div></div></div></div>
   <div class="modal" id="project-4"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img14.jpg" alt="The Gallery"><div class="modal-text"><h3>The Gallery</h3><p><strong>Địa điểm:</strong> Tây Ninh<br><strong>Diện tích:</strong> 260m²</p><p>Showroom được thiết kế với trục nhìn rõ, vùng sản phẩm chủ lực và khu tư vấn riêng để tăng khả năng chốt đơn.</p></div></div></div></div>
   <div class="modal" id="project-5"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img15.jpg" alt="D'or Kitchen"><div class="modal-text"><h3>D’or Kitchen</h3><p><strong>Địa điểm:</strong> Đắk Lắk<br><strong>Diện tích:</strong> 400m²</p><p>Nhà hàng được xây dựng quanh cảm giác ấm, riêng tư và cao cấp, đồng thời đảm bảo vận hành bếp và phục vụ nhanh gọn.</p></div></div></div></div>
   <div class="modal" id="project-6"><div class="modal-content"><button class="close">×</button><div class="modal-grid"><img src="assets/img/demo-img16.jpg" alt="Villa An Nhiên"><div class="modal-text"><h3>Villa An Nhiên</h3><p><strong>Địa điểm:</strong> Đồng Nai<br><strong>Diện tích:</strong> 520m²</p><p>Biệt thự nghỉ dưỡng dùng bảng màu trầm, vật liệu tự nhiên và khoảng thở lớn để tạo cảm giác yên tĩnh, sâu và bền vững theo thời gian.</p></div></div></div></div>
@@ -402,5 +554,197 @@
     }, { threshold: .15 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
+
+
+     
+    
+
+  
+</div>
+<script>
+
+function openBlog(blogId) {
+
+  document.getElementById('blogPopup').classList.add('active');
+
+  document.querySelectorAll('.popup-article').forEach(article => {
+    article.classList.remove('active');
+  });
+
+  document.getElementById(blogId).classList.add('active');
+
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBlog() {
+
+  document.getElementById('blogPopup').classList.remove('active');
+
+  document.body.style.overflow = 'auto';
+}
+
+window.addEventListener('keydown', function(e) {
+
+  if(e.key === 'Escape') {
+    closeBlog();
+  }
+
+});
+
+</script>
+<!-- BLOG POPUP -->
+<div class="blog-popup" id="blogPopup">
+
+  <div class="blog-popup-overlay" onclick="closeBlog()"></div>
+
+  <div class="blog-popup-content">
+
+    <button class="popup-close" onclick="closeBlog()">×</button>
+
+
+    <!-- BLOG 1 -->
+    <div class="popup-article" id="blog1">
+
+      <span class="popup-tag">Chiến lược không gian sống</span>
+
+      <h2>
+        Đẹp thôi chưa đủ, một căn nhà tốt cần khiến người ở muốn trở về mỗi ngày
+      </h2>
+
+      <p>
+        Có một giai đoạn thị trường nội thất gần như bị cuốn vào cuộc đua của hình ảnh. Người ta nói nhiều về đá nhập Ý, về gỗ óc chó, về đèn statement hay những không gian mang tính trình diễn. Nhưng sau nhiều năm làm việc với các gia đình ở nhiều độ tuổi khác nhau, Mira nhận ra rằng giá trị thật của một căn nhà chưa bao giờ nằm ở việc nó trông đắt tiền đến đâu.
+      </p>
+
+      <p>
+        Một không gian sống tốt là nơi khiến con người muốn trở về. Nó có thể không quá phô trương nhưng lại tạo cảm giác dễ chịu ngay từ khoảnh khắc đầu tiên bước vào. Có những căn nhà rất đẹp nhưng chỉ phù hợp để chụp ảnh. Người ở trong đó dần cảm thấy mệt vì ánh sáng quá lạnh, ghế sofa quá cứng, khoảng cách sinh hoạt thiếu tự nhiên hoặc mọi thứ quá hoàn hảo đến mức không còn cảm giác sống.
+      </p>
+
+      <p>
+        Nội thất cao cấp ngày nay không còn là câu chuyện của vật liệu. Nó là câu chuyện của cảm xúc. Một căn hộ tốt phải hiểu nhịp sống của người sử dụng. Người thích đọc sách cần ánh sáng và góc ngồi phù hợp. Gia đình có trẻ nhỏ cần lối di chuyển mềm và an toàn. Người làm việc sáng tạo cần không gian có chiều sâu thị giác nhưng không gây áp lực.
+      </p>
+
+      <p>
+        Khi Mira bắt đầu một dự án, thứ đầu tiên chúng tôi làm không phải chọn phong cách. Chúng tôi tìm hiểu cách khách hàng sống. Họ thức dậy lúc mấy giờ, có thường nấu ăn không, cuối tuần họ thích ở nhà hay tiếp bạn bè, họ thích ánh sáng vàng hay ánh sáng trắng, họ cần cảm giác nghỉ dưỡng hay cần sự tập trung.
+      </p>
+
+      <p>
+        Những điều đó nghe có vẻ nhỏ nhưng lại quyết định toàn bộ chất lượng của không gian. Một chiếc bàn ăn đặt đúng vị trí có thể khiến gia đình quây quần nhiều hơn. Một hệ đèn đúng cường độ có thể khiến người ta thư giãn sau ngày dài. Một khoảng trống vừa đủ có thể làm căn nhà thở được.
+      </p>
+
+      <p>
+        Chúng tôi luôn tin rằng luxury không nằm ở việc cố gắng gây choáng ngợp. Luxury thật sự là khi mọi thứ vận hành tự nhiên, tinh tế và đúng với người sử dụng. Đó là cảm giác ngồi xuống ghế sofa và thấy vừa vặn. Là cảm giác mở cửa phòng ngủ và thấy nhẹ đầu. Là khi căn nhà không cần cố chứng minh điều gì nhưng vẫn khiến người ta cảm nhận được sự đẳng cấp.
+      </p>
+
+      <p>
+        Một sai lầm phổ biến hiện nay là quá chạy theo xu hướng mạng xã hội. Rất nhiều khách hàng mang hình Pinterest đến và muốn sao chép nguyên vẹn. Nhưng một căn nhà đẹp trên ảnh chưa chắc đẹp khi đưa vào đời sống thật. Nội thất không nên là bản copy của người khác. Nó cần phản chiếu cá tính, gu thẩm mỹ và cách sống riêng của chủ nhân.
+      </p>
+
+      <p>
+        Chúng tôi từng gặp một khách hàng yêu phong cách tối giản Nhật Bản nhưng thực tế lại là người thích sưu tầm đồ decor và thường xuyên tiếp khách. Nếu áp dụng nguyên bản phong cách tối giản, không gian sẽ nhanh chóng trở nên bí bách và bất tiện. Thay vào đó, Mira điều chỉnh lại theo hướng contemporary warm minimalism để vừa giữ được sự tinh gọn vừa đủ không gian cho đời sống thật.
+      </p>
+
+      <p>
+        Sau cùng, một căn nhà thành công không phải căn nhà được khen nhiều nhất. Mà là căn nhà khiến người ở cảm thấy mình thuộc về nơi đó. Sau nhiều năm, mọi món đồ có thể thay đổi nhưng cảm giác dễ chịu vẫn còn ở lại.
+      </p>
+
+    </div>
+
+
+    <!-- BLOG 2 -->
+    <div class="popup-article" id="blog2">
+
+      <span class="popup-tag">Interior Branding</span>
+
+      <h2>
+        Nhà hàng đẹp chưa chắc đông khách, nhưng trải nghiệm đúng sẽ khiến khách quay lại
+      </h2>
+
+      <p>
+        Rất nhiều chủ đầu tư F&B hiện nay xem nội thất như một công cụ marketing. Điều đó không sai, nhưng nếu chỉ dừng ở việc tạo ra một không gian đẹp để chụp ảnh thì chưa đủ để xây dựng một thương hiệu bền vững.
+      </p>
+
+      <p>
+        Một nhà hàng hay quán cafe thành công không chỉ thu hút khách lần đầu. Điều quan trọng là khiến họ muốn quay lại thêm nhiều lần nữa. Và trải nghiệm không gian đóng vai trò rất lớn trong quyết định đó.
+      </p>
+
+      <p>
+        Có những quán đầu tư hàng tỷ đồng vào decor nhưng khách chỉ đến một lần. Không gian đẹp nhưng quá ồn, ánh sáng gây mỏi mắt, bàn ghế không thoải mái hoặc layout vận hành thiếu logic. Khách có thể check-in nhưng họ sẽ không ở lại lâu.
+      </p>
+
+      <p>
+        Tại Mira, khi thiết kế không gian F&B, chúng tôi luôn bắt đầu bằng hành vi khách hàng. Họ bước vào từ đâu, ánh nhìn đầu tiên chạm vào gì, thời gian ngồi trung bình bao lâu, nhân viên di chuyển như thế nào, khu vực nào tạo doanh thu tốt nhất.
+      </p>
+
+      <p>
+        Một không gian F&B tốt phải cân bằng được ba yếu tố: cảm xúc thương hiệu, trải nghiệm khách hàng và vận hành thực tế. Nếu chỉ đẹp mà vận hành khó, chi phí nhân sự sẽ tăng. Nếu chỉ tập trung công năng mà thiếu cảm xúc, thương hiệu sẽ nhạt.
+      </p>
+
+      <p>
+        Chúng tôi từng thiết kế một nhà hàng fine dining với diện tích không quá lớn nhưng chủ đầu tư muốn tạo cảm giác riêng tư và cao cấp. Thay vì chia quá nhiều vách ngăn, Mira xử lý bằng layering ánh sáng, vật liệu tối màu và khoảng cách thị giác. Kết quả là khách cảm thấy yên tĩnh hơn mà không gian vẫn thoáng.
+      </p>
+
+      <p>
+        Một yếu tố khác thường bị bỏ quên là âm thanh. Nội thất không chỉ là thứ nhìn thấy mà còn là thứ cảm nhận được. Trần quá cứng hoặc vật liệu phản âm mạnh sẽ khiến khách mệt sau khoảng ba mươi phút. Chúng tôi luôn tính toán acoustic ngay từ đầu thay vì sửa chữa sau khi vận hành.
+      </p>
+
+      <p>
+        Với cafe hoặc concept lifestyle, cảm xúc thương hiệu càng quan trọng hơn. Một quán cafe không đơn thuần bán đồ uống. Nó đang bán cảm giác. Người ta chọn nơi đó để làm việc, gặp bạn bè, thư giãn hoặc chụp ảnh. Không gian phải có tính nhận diện riêng đủ mạnh để khách nhớ tới.
+      </p>
+</div>
+<!-- BLOG 3 -->
+    <div class="popup-article" id="blog3">
+
+      <span class="popup-tag">Retail Experience</span>
+
+      <h2>
+        Showroom đẹp nhưng không bán được hàng thường sai ở trải nghiệm di chuyển
+      </h2>
+
+      <p>
+        Nhiều showroom hiện nay được đầu tư rất mạnh về hình ảnh nhưng hiệu quả bán hàng lại không như kỳ vọng. Không gian đẹp, vật liệu tốt, ánh sáng đắt tiền nhưng khách bước vào vài phút rồi rời đi mà không có nhiều tương tác.
+      </p>
+
+      <p>
+        Vấn đề thường không nằm ở sản phẩm mà nằm ở cách không gian dẫn dắt trải nghiệm. Một showroom hiệu quả không đơn giản là nơi trưng bày. Nó là hành trình điều hướng cảm xúc và hành vi khách hàng.
+      </p>
+
+      <p>
+        Trong thiết kế retail, layout di chuyển cực kỳ quan trọng. Khi khách bước vào, họ cần được dẫn đi một cách tự nhiên thay vì bị choáng ngợp. Nếu không gian quá nhiều điểm nhấn cùng lúc, khách sẽ mất tập trung. Nếu lối đi thiếu logic, họ sẽ bỏ qua những khu vực quan trọng.
+      </p>
+
+      <p>
+        Chúng tôi từng khảo sát một showroom thời trang cao cấp có thiết kế rất đẹp nhưng doanh thu thấp hơn kỳ vọng. Sau khi phân tích, vấn đề nằm ở việc sản phẩm best seller bị đặt ở vùng chết thị giác. Khách gần như không tiếp cận được khu vực đó nếu không đi hết showroom.
+      </p>
+
+      <p>
+        Sau khi điều chỉnh lại flow di chuyển, bổ sung các điểm dừng thị giác và thay đổi hệ ánh sáng theo từng tầng trải nghiệm, tỷ lệ khách tiếp cận sản phẩm chủ lực tăng lên rõ rệt.
+      </p>
+
+      <p>
+        Một showroom tốt cần có nhịp điệu. Có khu vực mở để gây ấn tượng, có khoảng nghỉ để khách quan sát, có điểm tập trung để tạo quyết định mua hàng. Mọi thứ phải được tính toán dựa trên tâm lý người dùng chứ không chỉ dựa trên thẩm mỹ.
+      </p>
+
+      <p>
+        Ánh sáng cũng là yếu tố quyết định rất lớn. Nhiều showroom mắc lỗi dùng ánh sáng đồng đều cho toàn bộ không gian khiến mọi thứ trở nên phẳng và thiếu điểm nhấn. Thay vào đó, ánh sáng nên được dùng như công cụ điều hướng sự chú ý.
+      </p>
+
+      <p>
+        Với showroom nội thất hoặc vật liệu, khách hàng cần được hình dung sản phẩm trong bối cảnh thực tế. Vì vậy Mira thường thiết kế theo dạng scene trải nghiệm thay vì xếp sản phẩm thành hàng. Một bộ sofa đặt trong không gian hoàn chỉnh luôn tạo cảm xúc tốt hơn việc đứng riêng lẻ dưới ánh đèn trắng.
+      </p>
+
+      <p>
+        Chúng tôi cũng đặc biệt quan tâm đến khoảng thở thị giác. Không gian bán hàng không nên nhồi quá nhiều sản phẩm. Luxury retail luôn hiểu rằng sự chọn lọc tạo nên giá trị. Khi khách có đủ khoảng trống để quan sát, họ sẽ cảm thấy sản phẩm có giá trị hơn.
+      </p>
+
+      <p>
+        Một showroom thành công không cần quá phức tạp. Nhưng nó phải khiến khách cảm thấy dễ chịu, tò mò và muốn khám phá thêm. Khi trải nghiệm được thiết kế đúng, khách hàng sẽ ở lại lâu hơn và khả năng ra quyết định cũng cao hơn.
+      </p>
+
+      <p>
+        Nội thất retail vì vậy không đơn thuần là thiết kế đẹp. Đó là sự kết hợp giữa tâm lý học hành vi, chiến lược thương hiệu và cảm xúc không gian.
+      </p>
+
+    </div>
+
 </body>
 </html>
