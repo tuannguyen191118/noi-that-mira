@@ -301,6 +301,75 @@
   background: rgba(212,175,55,.35);
 }
 
+.contact-actions{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:48px;
+}
+
+.contact-icon{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:24px;
+
+    background:rgba(217,184,122,.1);
+    border:1px solid rgba(217,184,122,.3);
+}
+
+.contact-icon span{
+    color:var(--gold);
+    font-size:28px;
+}
+
+.contact-actions h3{
+    font-size:34px;
+    margin-bottom:16px;
+}
+
+.contact-actions p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:32px;
+}
+
+.contact-btn{
+    height:60px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:16px;
+    font-weight:700;
+    transition:.3s ease;
+}
+
+.contact-btn:hover{
+    transform:translateY(-3px);
+}
+
+.contact-btn.zalo{
+    background:#0068ff;
+    color:#fff;
+}
+
+.contact-btn.messenger{
+    background:#1877f2;
+    color:#fff;
+}
+
+.contact-btn.phone{
+    background:linear-gradient(
+        135deg,
+        var(--gold),
+        var(--gold-soft)
+    );
+    color:#111;
+}
 
     @media (max-width: 900px) {
       .menu-btn { display: block; }
@@ -494,15 +563,36 @@
               <li><strong>Website</strong> noithatmira.vn</li>
             </ul>
           </div>
-          <div class="contact-panel reveal">
-            <form class="form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn. Mira sẽ liên hệ lại trong thời gian sớm nhất.');">
-              <input type="text" placeholder="Họ và tên" required>
-              <input type="tel" placeholder="Số điện thoại" required>
-              <input type="email" placeholder="Email">
-              <textarea placeholder="Bạn muốn làm căn hộ, biệt thự, showroom, cafe hay spa?" required></textarea>
-              <button class="btn" type="submit">Gửi yêu cầu tư vấn</button>
-            </form>
-          </div>
+          <div class="contact-panel reveal contact-actions">
+
+    <div class="contact-icon">
+        <span>✦</span>
+    </div>
+
+    <h3>Liên hệ nhanh với Mira</h3>
+
+    <p>
+        Chúng tôi ưu tiên trao đổi trực tiếp để hiểu rõ nhu cầu, ngân sách và phong cách sống của từng khách hàng.
+    </p>
+
+    <a href="https://zalo.me/0932922868"
+       target="_blank"
+       class="contact-btn zalo">
+        Nhắn Zalo
+    </a>
+
+    <a href="https://www.facebook.com/thietkenoithatMira"
+       target="_blank"
+       class="contact-btn messenger">
+        Nhắn Fanpage Facebook
+    </a>
+
+    <a href="tel:0907164121"
+       class="contact-btn phone">
+        Gọi Hotline 090 716 41 21
+    </a>
+
+</div>
         </div>
       </div>
     </section>
